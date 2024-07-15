@@ -1,0 +1,29 @@
+body {
+    background-color: #77966d35;
+    height: 100vh;
+}
+
+header {
+    height: 60px;
+}
+
+main {
+    min-height: calc(100vh - 140px);
+}
+
+footer {
+    height: 80px;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+}
+
+.card-title-wrapper {
+    display: flex;
+    align-items: center;
+}
+.card-title-wrapper>input {
+    margin: 2rem;
+}
