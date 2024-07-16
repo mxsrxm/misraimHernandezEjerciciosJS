@@ -73,7 +73,7 @@ function calcularIMC() {
 
         let imc = peso / (alturaM * alturaM);
 
-        document.getElementById('resultado').value = imc.toFixed(2);
+        document.getElementById('resultado').value = "IMC: " + imc.toFixed(2);
     });
 }
 
@@ -253,9 +253,6 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
 
 document.getElementById('btn_limpiar').addEventListener('click', limpiarCampos);
 
-
-
 convertidorMoneda();
 calcularIMC();
 mostrarNotas();
-
