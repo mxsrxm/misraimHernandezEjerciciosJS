@@ -1,6 +1,5 @@
 body {
-    background-color: #77966d35;
-    height: 100vh;
+    background-color: #e1f0dc86;
 }
 
 header {
@@ -12,8 +11,13 @@ img {
     height: 40px;
 }
 
+span>img {
+    width: 20px;
+    height: 20px;
+}
+
 main {
-    min-height: calc(100vh - 140px);
+    min-height: calc(100vh - 160px);
 }
 
 footer {
@@ -22,13 +26,10 @@ footer {
 
 .card {
     width: 250px;
-    height: 250px;
+    height: 200px;
 }
 
-.card-title-wrapper {
-    display: flex;
-    align-items: center;
-}
-.card-title-wrapper>input {
-    margin: 2rem;
+.scrollable-text {
+    max-height: 70px; 
+    overflow-y: auto;
 }
