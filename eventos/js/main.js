@@ -107,7 +107,11 @@ function mostrarNotas() {
     container_cards.innerHTML = ''; 
 
     if (notas.length === 0) {
-        container_cards.innerHTML = `<div class="alert alert-warning text-center">NO HAY NOTAS PARA MOSTRAR</div>`;
+        container_cards.innerHTML = `
+                <div class="alert alert-warning text-center">
+                    NO HAY NOTAS PARA MOSTRAR
+                </div>
+            `;
     } else {
         for (let i = 0; i < notas.length; i++) {
             crearCard(notas[i]);
@@ -144,17 +148,20 @@ function crearCard(notas) {
 }
 
 function agregarNota(titulo, texto) {
+
     idGlobal++; 
+
     let nuevaNota = {
         id: idGlobal,
         titulo: titulo,
         texto: texto,
         realizada: false
     };
-    notas.push(nuevaNota);
 
+    notas.push(nuevaNota);
     console.log(notas);
 
+    return nuevaNota;
 }
 
 function limpiarCampos() {
@@ -165,7 +172,9 @@ function limpiarCampos() {
 function borrarNota(id) {
     notas = notas.filter(nota => nota.id !== id);
     document.getElementById('container_cards').innerHTML = '';
-    mostrarNotas();
+   /*  mostrarNotas(); */
+
+    aplicarFiltros();
 }
 
 function marcarRealizada(id) {
@@ -179,7 +188,9 @@ function marcarRealizada(id) {
         }
     }
     document.getElementById('container_cards').innerHTML = '';
-    mostrarNotas();
+   /*  mostrarNotas(); */
+    aplicarFiltros();
+
 }
 
 function filtrarNotasRealizadas(array) {
@@ -247,3 +258,4 @@ document.getElementById('btn_limpiar').addEventListener('click', limpiarCampos);
 convertidorMoneda();
 calcularIMC();
 mostrarNotas();
+
