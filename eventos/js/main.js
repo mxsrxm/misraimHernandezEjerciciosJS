@@ -172,7 +172,6 @@ function limpiarCampos() {
 function borrarNota(id) {
     notas = notas.filter(nota => nota.id !== id);
     document.getElementById('container_cards').innerHTML = '';
-    /*  mostrarNotas(); */
 
     aplicarFiltros();
 }
@@ -253,6 +252,8 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
 
 document.getElementById('btn_limpiar').addEventListener('click', limpiarCampos);
 
+
 convertidorMoneda();
 calcularIMC();
 mostrarNotas();
+
