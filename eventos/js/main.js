@@ -1,67 +1,67 @@
 let notas = [
-        {
-            id: 1,
-            titulo: 'Sacar la basura',
-            texto: 'Mi mama me va a regañar si no saco la basura',
-            realizada: false,
-        },
-        {
-            id: 2,
-            titulo: 'Estudiar',
-            texto: 'Tengo que estudiar para el examen de mañana',
-            realizada: true,
-        },
-        {
-            id: 3,
-            titulo: 'Hacer ejercicio',
-            texto: 'No quiero engordar',
-            realizada: false,
-        },
-        {
-            id: 4,
-            titulo: 'Comprar el pan',
-            texto: 'No hay pan para el desayuno',
-            realizada: true,
-        },
-        {
-            id: 5,
-            titulo: 'Hacer la tarea',
-            texto: 'No quiero reprobar',
-            realizada: true,
-        },
-        {
-            id: 6,
-            titulo: 'Lavar el carro',
-            texto: 'El carro esta muy sucio',
-            realizada: false,
-        },
-        {
-            id: 7,
-            titulo: 'Llamar a mi mama',
-            texto: 'Hace mucho que no hablo con ella',
-            realizada: false,
-        },
-        {
-            id: 8,
-            titulo: 'Hacer la comida',
-            texto: 'No hay nada para comer',
-            realizada: true,
-        },
-        {
-            id: 9,
-            titulo: 'Llevar a pasear al perro',
-            texto: 'No quiero que se aburra',
-            realizada: false,
-        },
-        {
-            id: 10,
-            titulo: 'Hacer la cama',
-            texto: 'No quiero que mi mama me regañe',
-            realizada: true,
-        }
-    ];
+    {
+        id: 1,
+        titulo: 'Sacar la basura',
+        texto: 'Mi mama me va a regañar si no saco la basura',
+        realizada: false,
+    },
+    {
+        id: 2,
+        titulo: 'Estudiar',
+        texto: 'Tengo que estudiar para el examen de mañana',
+        realizada: true,
+    },
+    {
+        id: 3,
+        titulo: 'Hacer ejercicio',
+        texto: 'No quiero engordar',
+        realizada: false,
+    },
+    {
+        id: 4,
+        titulo: 'Comprar el pan',
+        texto: 'No hay pan para el desayuno',
+        realizada: true,
+    },
+    {
+        id: 5,
+        titulo: 'Hacer la tarea',
+        texto: 'No quiero reprobar',
+        realizada: true,
+    },
+    {
+        id: 6,
+        titulo: 'Lavar el carro',
+        texto: 'El carro esta muy sucio',
+        realizada: false,
+    },
+    {
+        id: 7,
+        titulo: 'Llamar a mi mama',
+        texto: 'Hace mucho que no hablo con ella',
+        realizada: false,
+    },
+    {
+        id: 8,
+        titulo: 'Hacer la comida',
+        texto: 'No hay nada para comer',
+        realizada: true,
+    },
+    {
+        id: 9,
+        titulo: 'Llevar a pasear al perro',
+        texto: 'No quiero que se aburra',
+        realizada: false,
+    },
+    {
+        id: 10,
+        titulo: 'Hacer la cama',
+        texto: 'No quiero que mi mama me regañe',
+        realizada: true,
+    }
+];
 
-let idGlobal = 2; 
+let idGlobal = 10;
 
 function calcularIMC() {
     document.getElementById('form-calculadora-imc').addEventListener('submit', function (event) {
@@ -104,7 +104,7 @@ function convertidorMoneda() {
 
 function mostrarNotas() {
     let container_cards = document.getElementById("container_cards");
-    container_cards.innerHTML = ''; 
+    container_cards.innerHTML = '';
 
     if (notas.length === 0) {
         container_cards.innerHTML = `
@@ -125,13 +125,13 @@ function crearCard(notas) {
     let container_cards = document.getElementById("container_cards");
     let card = document.createElement("div");
     card.classList = "card m-2";
-    
-    let textoTachado = notas.realizada? 'style="text-decoration: line-through;"': '';
+
+    let textoTachado = notas.realizada ? 'style="text-decoration: line-through;"' : '';
 
     card.innerHTML = `
         <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-center p-2">
-                <input onClick="marcarRealizada(${notas.id})" type="checkbox" ${notas.realizada? "checked": ""}>
+                <input onClick="marcarRealizada(${notas.id})" type="checkbox" ${notas.realizada ? "checked" : ""}>
                 <h5 class="card-title m-2" ${textoTachado}>${notas.titulo}</h5>
             </div>
             <div class="d-flex flex-column flex-grow-1">
@@ -149,7 +149,7 @@ function crearCard(notas) {
 
 function agregarNota(titulo, texto) {
 
-    idGlobal++; 
+    idGlobal++;
 
     let nuevaNota = {
         id: idGlobal,
@@ -172,7 +172,7 @@ function limpiarCampos() {
 function borrarNota(id) {
     notas = notas.filter(nota => nota.id !== id);
     document.getElementById('container_cards').innerHTML = '';
-   /*  mostrarNotas(); */
+    /*  mostrarNotas(); */
 
     aplicarFiltros();
 }
@@ -188,7 +188,7 @@ function marcarRealizada(id) {
         }
     }
     document.getElementById('container_cards').innerHTML = '';
-   /*  mostrarNotas(); */
+    /*  mostrarNotas(); */
     aplicarFiltros();
 
 }
@@ -202,8 +202,8 @@ function filtrarNotasPorTexto(array, texto) {
     if (!texto) {
         return array;
     }
-    
-    return array.filter(nota => 
+
+    return array.filter(nota =>
         nota.titulo.toLowerCase().includes(texto.toLowerCase()) ||
         nota.texto.toLowerCase().includes(texto.toLowerCase())
     );
@@ -241,8 +241,8 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
 
     if (titulo && texto) {
 
-        agregarNota(titulo, texto); 
-        crearCard(notas[notas.length - 1]); 
+        agregarNota(titulo, texto);
+        crearCard(notas[notas.length - 1]);
 
         document.getElementById('titulo').value = '';
         document.getElementById('texto').value = '';
