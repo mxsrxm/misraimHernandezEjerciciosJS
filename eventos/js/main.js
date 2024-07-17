@@ -173,6 +173,29 @@ function agregarNota(titulo, texto) {
 
     aplicarFiltros();
 
+    document.getElementById('titulo').value = '';
+    document.getElementById('texto').value = ''; 
+
+    //mostrar un mensaje de exito
+    let container_cards = document.getElementById('mensaje');
+    container_cards.innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Nota agregada </strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+
+    
+    
+
+
+    
+
+    
+
+    
+
+
 }
 
 function limpiarCampos() {
@@ -275,7 +298,9 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
         }
 
         document.getElementById('titulo').value = '';
-        document.getElementById('texto').value = '';
+        document.getElementById('texto').value = ''; 
+
+        
     }
 
     console.log(notas);
