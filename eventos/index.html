@@ -13,7 +13,7 @@
 
 <body>
     <header class=" border-bottom shadow bg-body-tertiary sticky-top">
-        <nav class="navbar navbar-expand-md navbar-light bg-light  h-100">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light  h-100 ">
             <div class="container-fluid bg-light h-100 d-flex align-items-center">
                 <a href="#"
                     class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none px-5">
@@ -21,30 +21,34 @@
                         src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
                         alt="Logo">
                     <span class="fs-4"> Ejercicios JS | Eventos </span>
-                    <h1 hidden> Ejercicios JS | Eventos</h1>
+                    <!-- <h1 hidden> Ejercicios JS | Eventos</h1> --> 
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto  bg-light px-5">
                         <li class="nav-item border-bottom border-primary mx-1 d-flex align-items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/128/2117/2117109.png" alt="icono" class="mx-1">
+                            <img src="https://cdn-icons-png.flaticon.com/128/2117/2117109.png" alt="icono"
+                                class="mx-1 icono-size">
                             <a class="nav-link" aria-current="page" href="#container-calculadora-imc">Calculadora
                                 IMC</a>
                         </li>
                         <li class="nav-item border-bottom border-primary mx-1 d-flex align-items-center">
                             <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/usd_dollar_3313.png" alt="icono"
-                                class="mx-1">
+                                class="mx-1 icono-size">
                             <a class="nav-link" href="#container_convertidor_moneda">Convertidor Moneda</a>
                         </li>
                         <li class="nav-item border-bottom border-primary mx-1 d-flex align-items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/128/5940/5940833.png" alt="icono" class="mx-1">
+                            <img src="https://cdn-icons-png.flaticon.com/128/5940/5940833.png" alt="icono"
+                                class="mx-1 icono-size">
                             <a class="nav-link" href="#container_form_tareas">Formulario Tareas</a>
                         </li>
                         <li class="nav-item border-bottom border-primary mx-1 d-flex align-items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/128/3209/3209238.png" alt="icono" class="mx-1">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3209/3209238.png" alt="icono"
+                                class="mx-1 icono-size">
                             <a class="nav-link href" href="#container_tareas">Tareas</a>
                         </li>
                     </ul>
@@ -53,12 +57,12 @@
         </nav>
     </header>
 
-    <main>
+    <main class="bg-body-secondary">
 
-        <div class="container">
+        <div class="container container-boxes">
             <div class="row">
 
-                <div id="container-calculadora-imc" class=" col  p-3">
+                <div id="container-calculadora-imc" class=" col-lg-3 col-md-6 col-sm-12 p-3">
                     <form id="form-calculadora-imc"
                         class="d-flex flex-column align-items-center bg-light border border-primary border-warning border-5 rounded-4 shadow p-3">
                         <h3 class="m">Calculadora IMC</h3>
@@ -90,7 +94,7 @@
                     </form>
                 </div>
 
-                <div id="container_convertidor_moneda" class=" col  p-3">
+                <div id="container_convertidor_moneda" class=" col-lg-3 col-md-6 col-sm-12 p-3">
                     <form id="form_convertidor_moneda"
                         class="d-flex flex-column align-items-center bg-light border  border-success border-5 rounded-4 shadow p-3">
                         <h3 class="mb-3">Conversor Divisa</h3>
@@ -118,25 +122,26 @@
                     </form>
                 </div>
 
-                <div id="container_form_tareas" class=" col-6 p-3">
+                <div id="container_form_tareas" class=" col-lg-6 col-12 p-3">
                     <form id="form-nota"
-                        class=" container d-flex flex-column align-items-center  p-3 container-nota-form">
+                        class=" container d-flex flex-column align-items-center  p-3 container-nota-form border border-black border-2">
                         <h3 class="mb-1 fs-2 text fw-bold">Nueva Nota</h3>
 
-                        <div class="container p-3 input-group-sm " >
-                            <input type="text" class="form-control mb-2 border-primary" id="titulo" name="titulo" placeholder="Titulo"
-                                required>
-                            <textarea class="form-control container border-primary input-group-sm " id="texto" name="texto" placeholder="Descripcion"
-                                required></textarea>
+                        <div class="container p-3 input-group-sm ">
+                            <input type="text" class="form-control mb-2 border-primary" id="titulo" name="titulo"
+                                placeholder="Titulo" required>
+                            <textarea class="form-control container border-primary input-group-sm " id="texto"
+                                name="texto" placeholder="Descripcion" required></textarea>
                         </div>
 
                         <div class=" container d-flex justify-content-center mb-3">
-                            <button type="submit" class="btn btn-success mx-3  btn-sm " id="btn_agregar_tarea">Agregar</button>
+                            <button type="submit" class="btn btn-success mx-3  btn-sm "
+                                id="btn_agregar_tarea">Agregar</button>
                             <button type="button" class="btn btn-danger mx-3  btn-sm" id="btn_limpiar">Limpiar</button>
                         </div>
 
-                        <div id ="mensaje">
-                           
+                        <div id="mensaje">
+
                         </div>
 
                     </form>
@@ -145,26 +150,32 @@
             </div>
         </div>
 
-        <div id="container_tareas" class="pb-5">
+        <div id="container_tareas " class="pb-5">
             <div class=" container d-flex flex-column align-items-center p-3 container-tablero">
                 <h3 class="m fs-1 text fw-bold">Mis Tareas</h3>
 
                 <div class=" container d-flex  flex  align-items-center mb-3">
                     <div class="form-check form-switch mx-3">
 
-                        <div class="checkbox-realizadas container">
-                            <input type="checkbox" id="notas_realizadas">
+                        <div class="checkbox-realizadas container rounded-5 bg-light p-1">
+                            <input type="checkbox" id="notas_realizadas" class="d-none">
+                            <label for="notas_realizadas" class="rounded-5"></label>
                         </div>
-                        <label class="form-check-label fw-medium" for="notas_realizadas" id="label_realizadas">Realizadas</label>
+
+                        <label class="form-check-label fw-medium" for="notas_realizadas"
+                            id="label_realizadas">Realizadas</label>
                     </div>
 
                     <div class="container d-flex align-items-center position-relative">
-                        <svg class="icon position-absolute mx-3" viewBox="0 0 24 24">
+                        <svg class="icono-size position-absolute mx-3" viewBox="0 0 24 24">
                             <g>
-                                <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                                <path
+                                    d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                </path>
                             </g>
                         </svg>
-                        <input id="buscador" name="buscador" placeholder="Buscar Nota" stype="text" class="input w-100 px-5 border border-4 rounded-3 bg-warning-subtle">
+                        <input id="buscador" name="buscador" placeholder="Buscar Nota" type="text"
+                            class="input-buscar w-100 px-5 border border-4 rounded-3 bg-warning-subtle">
                     </div>
                 </div>
 

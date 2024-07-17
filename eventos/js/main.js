@@ -2,7 +2,7 @@ let notas = [
     {
         id: 1,
         titulo: 'Sacar la basura',
-        texto: 'Mi mama me va a regañar si no saco la basura',
+        texto: 'Mi mama me va a regañar si no saco la basura lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
         realizada: false,
     },
     {
@@ -135,21 +135,18 @@ function crearCard(nota) {
     card.innerHTML = `
         <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-center p-2">
-                <label class="container-star">
+                <label class="container-estrella-checkbox">
                     <input class="position-absolute opacity-0" onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
                     <svg id="Layer_1" version="1.2" viewBox="0 0 24 24"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g><path d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z"></path></g></g></svg>
                 </label>
-                <h5 class="card-title m-2" ${textoTachado}>${nota.titulo}</h5>
+                <h5 class="card-title m-1 font-monospace" ${textoTachado}>${nota.titulo}</h5>
             </div>
             <div class="d-flex flex-column flex-grow-1">
-                <div class="scroll-texto">
-                    <p class="card-text mb-2" ${textoTachado}>${nota.texto}</p>
+                <div class="scroll-texto overflow-y-auto">
+                    <p class="card-text mb-3 font-monospace" ${textoTachado}>${nota.texto}</p>
                 </div>
                 <div class="mt-auto d-flex justify-content-center">
-                <button type="button"  onclick="borrarNota(${nota.id})" class="button">
-                    <span class="button__text">Borrar</span>
-                    <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg"><title></title><path style="fill:none;stroke:#323232;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"></path><line y2="112" y1="112" x2="432" x1="80" style="stroke:#323232;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line><path style="fill:none;stroke:#323232;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"></path><line y2="400" y1="176" x2="256" x1="256" style="fill:none;stroke:#323232;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line y2="400" y1="176" x2="192" x1="184" style="fill:none;stroke:#323232;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line y2="400" y1="176" x2="320" x1="328" style="fill:none;stroke:#323232;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></svg></span>
-                    </button>
+                    <button type="button" onclick="borrarNota(${nota.id})" class="button-nota p-1 bg-danger-subtle" role="button">BORRAR</button>
                 </div>
             </div>
         </div>
@@ -176,7 +173,6 @@ function agregarNota(titulo, texto) {
     document.getElementById('titulo').value = '';
     document.getElementById('texto').value = ''; 
 
-    //mostrar un mensaje de exito
     let container_cards = document.getElementById('mensaje');
     container_cards.innerHTML = `
         <div class="alert alert-success alert-dismissible fade show" role="alert">
