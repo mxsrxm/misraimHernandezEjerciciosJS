@@ -1,6 +1,6 @@
 # Proyecto de Aplicaciones en JavaScript
 
-Este repositorio contiene tres aplicaciones desarrolladas en JavaScript: una calculadora de IMC, un conversor de divisas y una aplicación de notas. Cada aplicación está organizada en su propio directorio con instrucciones y código fuente.
+Este repositorio contiene tres aplicaciones desarrolladas en JavaScript: una calculadora de IMC, un conversor de divisas y una aplicación de notas. 
 
 ## Contenido
 
