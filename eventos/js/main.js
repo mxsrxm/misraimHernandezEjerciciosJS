@@ -65,12 +65,12 @@ let idGlobal = 10;
 
 function calcularIMC() {
     document.getElementById('form-calculadora-imc').addEventListener('submit', function (event) {
+
         event.preventDefault();
 
         let peso = parseFloat(document.getElementById('peso').value);
         let alturaCm = parseFloat(document.getElementById('altura').value);
         let alturaM = alturaCm / 100;
-
         let imc = peso / (alturaM * alturaM);
 
         document.getElementById('resultado').value = "IMC: " + imc.toFixed(2);
@@ -79,7 +79,6 @@ function calcularIMC() {
 
 function convertidorMoneda() {
     const unDolar = 140;
-
     let inputDolar = document.getElementById('dolarEstadounidense');
     let inputPeso = document.getElementById('pesoColombiano');
 
@@ -94,6 +93,7 @@ function convertidorMoneda() {
 
     inputPeso.addEventListener('input', function () {
         let peso = parseFloat(inputPeso.value);
+
         if (!isNaN(peso)) {
             inputDolar.value = (peso / unDolar).toFixed(2);
         } else {
@@ -109,7 +109,7 @@ function mostrarNotas() {
     if (notas.length === 0) {
         container_cards.innerHTML = `
             <div class="card-chiems d-flex justify-content-center align-items-center m-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrOSJrktBC0Wu16zOpkG6oL33AGJYl3JnVaQ&s" alt="Chiems" class="chiems-img">
+                <img src="https://tr.rbxcdn.com/aa21af495ab16ddff525dcfc54b3b2c8/420/420/Hat/Png" alt="Chiems" class="chiems-img">
                 <p class="fs-1 text fw-bold">No hay notas para mostrar</p>
             </div>
             `;
@@ -168,7 +168,7 @@ function agregarNota(titulo, texto) {
     aplicarFiltros();
 
     document.getElementById('titulo').value = '';
-    document.getElementById('texto').value = ''; 
+    document.getElementById('texto').value = '';
 
     let container_cards = document.getElementById('mensaje');
     container_cards.innerHTML = `
@@ -196,8 +196,6 @@ function borrarNota(id) {
     aplicarFiltros();
 
     console.log(notas);
-
-
 }
 
 function marcarRealizada(id) {
@@ -211,7 +209,6 @@ function marcarRealizada(id) {
         }
     }
     document.getElementById('container_cards').innerHTML = '';
-    /*  mostrarNotas(); */
     aplicarFiltros();
 
     console.log(notas);
@@ -233,7 +230,7 @@ function filtrarNotasPorTexto(array, texto) {
     );
 }
 
-/* function aplicarFiltros() {
+function aplicarFiltros() {
     let textoBuscado = document.getElementById('buscador').value;
     let mostrarRealizadas = document.getElementById('notas_realizadas').checked;
 
@@ -248,86 +245,26 @@ function filtrarNotasPorTexto(array, texto) {
     notasFiltradas = filtrarNotasPorTexto(notasFiltradas, textoBuscado);
 
     let container_cards = document.getElementById('container_cards');
-    container_cards.innerHTML = ''; 
+    container_cards.innerHTML = '';
 
     if (notasFiltradas.length === 0) {
         container_cards.innerHTML = `
-            <div class="card-chiems d-flex justify-content-center align-items-center m-3 shadow p-4 mb-5 bg-light-subtle rounded">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkrZS2unG3bJuMM5Z7ecj8tlLYAdOllESDZg&s" alt="Chiems" class="chiems-img">
-                <p class="fs-1 text fw-bold font-monospace">No hay notas para mostrar</p>
-            </div>
-        `;
-    } else {
-        for (let i = 0; i < notasFiltradas.length; i++) {
-            crearCard(notasFiltradas[i]);
-        }
-    }
-} */
-
-    function aplicarFiltros() {
-        let textoBuscado = document.getElementById('buscador').value;
-        let mostrarRealizadas = document.getElementById('notas_realizadas').checked;
-    
-        let notasFiltradas;
-    
-        if (mostrarRealizadas) {
-            notasFiltradas = filtrarNotasRealizadas(notas);
-        } else {
-            notasFiltradas = notas;
-        }
-    
-        notasFiltradas = filtrarNotasPorTexto(notasFiltradas, textoBuscado);
-    
-        let container_cards = document.getElementById('container_cards');
-        container_cards.innerHTML = ''; 
-    
-        if (notasFiltradas.length === 0) {
-            container_cards.innerHTML = `
                 <div class="card-chiems d-flex justify-content-center align-items-center m-3 shadow p-4 mb-5 bg-light-subtle rounded">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkrZS2unG3bJuMM5Z7ecj8tlLYAdOllESDZg&s" alt="Chiems" class="chiems-img">
                     <p class="fs-1 text fw-bold font-monospace">No hay notas para mostrar</p>
                 </div>
             `;
-        } else {
-            for (let i = 0; i < notasFiltradas.length; i++) {
-                crearCard(notasFiltradas[i]);
-            }
+    } else {
+        for (let i = 0; i < notasFiltradas.length; i++) {
+            crearCard(notasFiltradas[i]);
         }
     }
+}
 
 
 document.getElementById('notas_realizadas').addEventListener('change', aplicarFiltros);
 
 document.getElementById('buscador').addEventListener('input', aplicarFiltros);
-
-/* document.getElementById('form-nota').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    let titulo = document.getElementById('titulo').value;
-    let texto = document.getElementById('texto').value;
-
-    if (titulo && texto) {
-        let nuevaNota = agregarNota(titulo, texto);
-
-        let textoBuscado = document.getElementById('buscador').value;
-        let mostrarRealizadas = document.getElementById('notas_realizadas').checked;
-
-        let cumpleFiltros = (mostrarRealizadas ? nuevaNota.realizada : true) &&
-            (nuevaNota.titulo.toLowerCase().includes(textoBuscado.toLowerCase()) ||
-             nuevaNota.texto.toLowerCase().includes(textoBuscado.toLowerCase()));
-
-        if (cumpleFiltros) {
-            crearCard(nuevaNota);
-        }
-
-        document.getElementById('titulo').value = '';
-        document.getElementById('texto').value = ''; 
-
-        
-    }
-
-    console.log(notas);
-}); */
 
 document.getElementById('form-nota').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -341,13 +278,10 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
         aplicarFiltros();
 
         document.getElementById('titulo').value = '';
-        document.getElementById('texto').value = ''; 
+        document.getElementById('texto').value = '';
     }
 
-/*     console.log(notas);
- */});
-
-
+});
 
 document.getElementById('btn_limpiar').addEventListener('click', limpiarCampos);
 
