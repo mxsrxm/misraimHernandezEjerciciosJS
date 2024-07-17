@@ -157,7 +157,6 @@ function crearCard(nota) {
     container_cards.appendChild(card);
 }
 
-
 function agregarNota(titulo, texto) {
 
     idGlobal++;
@@ -207,7 +206,6 @@ function marcarRealizada(id) {
 function filtrarNotasRealizadas(array) {
     return array.filter(nota => nota.realizada === true);
 }
-
 
 function filtrarNotasPorTexto(array, texto) {
     if (!texto) {
@@ -283,9 +281,7 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
     console.log(notas);
 });
 
-
 document.getElementById('btn_limpiar').addEventListener('click', limpiarCampos);
-
 
 convertidorMoneda();
 calcularIMC();
