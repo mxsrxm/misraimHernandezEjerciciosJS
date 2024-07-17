@@ -146,7 +146,7 @@ function crearCard(nota) {
                     <p class="card-text mb-3 font-monospace" ${textoTachado}>${nota.texto}</p>
                 </div>
                 <div class="mt-auto d-flex justify-content-center">
-                    <button type="button" onclick="borrarNota(${nota.id})" class="button-nota p-1 bg-danger-subtle" role="button">BORRAR</button>
+                    <button type="button" onclick="borrarNota(${nota.id})" class="button-nota p-1 bg-danger-subtle" role="button">BORRAR NOTA</button>
                 </div>
             </div>
         </div>
@@ -155,7 +155,6 @@ function crearCard(nota) {
 }
 
 function agregarNota(titulo, texto) {
-
     idGlobal++;
 
     let nuevaNota = {
@@ -166,8 +165,6 @@ function agregarNota(titulo, texto) {
     };
 
     notas.push(nuevaNota);
-    console.log(notas);
-
     aplicarFiltros();
 
     document.getElementById('titulo').value = '';
@@ -181,18 +178,11 @@ function agregarNota(titulo, texto) {
         </div>
     `;
 
-    
-    
+    console.log(notas);
 
-
-    
-
-    
-
-    
-
-
+    return nuevaNota;
 }
+
 
 function limpiarCampos() {
     document.getElementById('titulo').value = '';
@@ -204,6 +194,10 @@ function borrarNota(id) {
     document.getElementById('container_cards').innerHTML = '';
 
     aplicarFiltros();
+
+    console.log(notas);
+
+
 }
 
 function marcarRealizada(id) {
@@ -219,6 +213,8 @@ function marcarRealizada(id) {
     document.getElementById('container_cards').innerHTML = '';
     /*  mostrarNotas(); */
     aplicarFiltros();
+
+    console.log(notas);
 
 }
 
@@ -237,7 +233,7 @@ function filtrarNotasPorTexto(array, texto) {
     );
 }
 
-function aplicarFiltros() {
+/* function aplicarFiltros() {
     let textoBuscado = document.getElementById('buscador').value;
     let mostrarRealizadas = document.getElementById('notas_realizadas').checked;
 
@@ -266,14 +262,45 @@ function aplicarFiltros() {
             crearCard(notasFiltradas[i]);
         }
     }
-}
+} */
+
+    function aplicarFiltros() {
+        let textoBuscado = document.getElementById('buscador').value;
+        let mostrarRealizadas = document.getElementById('notas_realizadas').checked;
+    
+        let notasFiltradas;
+    
+        if (mostrarRealizadas) {
+            notasFiltradas = filtrarNotasRealizadas(notas);
+        } else {
+            notasFiltradas = notas;
+        }
+    
+        notasFiltradas = filtrarNotasPorTexto(notasFiltradas, textoBuscado);
+    
+        let container_cards = document.getElementById('container_cards');
+        container_cards.innerHTML = ''; 
+    
+        if (notasFiltradas.length === 0) {
+            container_cards.innerHTML = `
+                <div class="card-chiems d-flex justify-content-center align-items-center m-3 shadow p-4 mb-5 bg-light-subtle rounded">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkrZS2unG3bJuMM5Z7ecj8tlLYAdOllESDZg&s" alt="Chiems" class="chiems-img">
+                    <p class="fs-1 text fw-bold font-monospace">No hay notas para mostrar</p>
+                </div>
+            `;
+        } else {
+            for (let i = 0; i < notasFiltradas.length; i++) {
+                crearCard(notasFiltradas[i]);
+            }
+        }
+    }
 
 
 document.getElementById('notas_realizadas').addEventListener('change', aplicarFiltros);
 
 document.getElementById('buscador').addEventListener('input', aplicarFiltros);
 
-document.getElementById('form-nota').addEventListener('submit', function (e) {
+/* document.getElementById('form-nota').addEventListener('submit', function (e) {
     e.preventDefault();
 
     let titulo = document.getElementById('titulo').value;
@@ -300,7 +327,27 @@ document.getElementById('form-nota').addEventListener('submit', function (e) {
     }
 
     console.log(notas);
-});
+}); */
+
+document.getElementById('form-nota').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let titulo = document.getElementById('titulo').value;
+    let texto = document.getElementById('texto').value;
+
+    if (titulo && texto) {
+        let nuevaNota = agregarNota(titulo, texto);
+
+        aplicarFiltros();
+
+        document.getElementById('titulo').value = '';
+        document.getElementById('texto').value = ''; 
+    }
+
+/*     console.log(notas);
+ */});
+
+
 
 document.getElementById('btn_limpiar').addEventListener('click', limpiarCampos);
 
